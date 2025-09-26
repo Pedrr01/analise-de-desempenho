@@ -20,7 +20,6 @@ def imprimir(lista):
 
 
 def carregar_valores(linha):
-    # remover o BOM
     return list(map(int, linha.replace("\ufeff", "").strip().split()))
 
 
@@ -30,9 +29,7 @@ def main(arquivo):
     with open(caminho, "r", encoding="utf-8") as f:
         linhas = f.readlines()
 
-
     lista = carregar_valores(linhas[0])
-
     qtd_acoes = int(linhas[1].replace("\ufeff", "").strip())
 
     for i in range(2, 2 + qtd_acoes):
@@ -55,6 +52,11 @@ if __name__ == "__main__":
         print("ERRO! adicione um arquivo válido.")
     else:
         arquivo = sys.argv[1]
+
+        inicio = time.time()
+
         main(arquivo)
-    tempo = time.time()
-    print(f"Tempo de execução: {tempo} segundos")
+
+        fim = time.time()
+
+        print(f"Tempo de execução: {fim - inicio:.6f} segundos")

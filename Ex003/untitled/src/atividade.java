@@ -6,7 +6,7 @@ import java.util.List;
 
 public class atividade {
 
-
+    // Está colocando o valor no inicio, fim ou na posição exata:
     public static void adicionar(List<Integer> lista, int valor, int pos) {
         if (pos <= 0) {
             lista.add(0, valor);
@@ -17,10 +17,12 @@ public class atividade {
         }
     }
 
+    // Remove o primeiro valor encontrado na lista:
     public static void remover(List<Integer> lista, int valor) {
         lista.remove(Integer.valueOf(valor));
     }
 
+    // Percorre a lista e imprime todos os valores separados por espaço:
     public static void imprimir(List<Integer> lista) {
         for (int i = 0; i < lista.size(); i++) {
             System.out.print(lista.get(i));
@@ -31,9 +33,11 @@ public class atividade {
         System.out.println();
     }
 
+    // Recebe a primeira linha e remove o BOM e separa cada valor por um espaço.
+    // Converte os valores para inteiro e adiciona na lista valores:
     public static List<Integer> carregarValores(String linha) {
         List<Integer> valores = new ArrayList<>();
-        linha = linha.replace("\uFEFF", "").trim(); // para remove o BOM
+        linha = linha.replace("\uFEFF", "").trim();
         String[] partes = linha.split("\\s+");
         for (String parte : partes) {
             valores.add(Integer.parseInt(parte));
@@ -48,8 +52,11 @@ public class atividade {
         // Início do time
         long inicio = System.nanoTime();
 
+        // BufferedReader serve para ler as linhas do arquivo:
         try (BufferedReader br = new BufferedReader(new FileReader(caminho))) {
+            // Transforma cada linha em
             String linha = br.readLine();
+            // A função carregar devolve
             List<Integer> lista = carregarValores(linha);
 
             linha = br.readLine();
